@@ -1,0 +1,9 @@
+<p>
+  inputelements works!
+</p>
+<input (keyup)="onkeyup($event)"/>
+<p>{{inputvalues}}</p>
+
+<input #newitem (keyup.enter)="additem(newitem.value)">
+<button (click)="additem(newitem.value)">Add item</button>
+<ul><li *ngFor="let item of items">{{item}}</li></ul>

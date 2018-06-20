@@ -1,0 +1,29 @@
+<a routerLink="/adduser">Add User</a>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <th *ngFor="let ucolumn of usercolumn;index as i">{{ucolumn}}</th>
+    </tr>
+    <tr *ngFor="let user of userslist">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.status}}</td>
+      <td> 
+      <input type="button" value="Edit" (click)="userEdit(user.id)">         
+      <input type="button"  value= "delete" (click)="openModal(template)">
+      </td>
+      <ng-template #template>
+        <div class="modal-body text-center">
+          <p>Do you want to confirm?</p>
+          <button type="button" class="btn btn-default" (click)="deleteuser(user)" >Yes</button>
+          <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+        </div>
+      </ng-template>
+    </tr>
+  </table>
+  </div>
+<!-- (click)="deleteuser(user)" -->
+<pre class="card card-block card-header">{{message}}</pre>
+
+

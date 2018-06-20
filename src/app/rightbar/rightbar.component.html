@@ -1,0 +1,16 @@
+<p>
+  rightbar works!
+</p>
+
+
+<ul class="list-group">
+    <li class="list-group-item" routerLink="aboutus">Aboutus</li>
+    <li class="list-group-item" routerLink="contactus">contactus</li>
+    <li class="list-group-item" routerLink="sampleinput">sampleinput</li>
+    <li class="list-group-item" routerLink="userslist">userlist</li>
+    <li class="list-group-item" routerLink="employees">employee from json file</li>
+    <li *ngIf="!commonserv.is_loggedin" class="list-group-item" routerLink="login">Login</li>
+    <li *ngIf="!commonserv.is_loggedin" class="list-group-item" routerLink="register">Register</li>
+    <li class="list-group-item" routerLink="adduser">add user</li>
+    <li class="list-group-item" routerLink="career">Careers</li>
+  </ul> ;

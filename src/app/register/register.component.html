@@ -1,0 +1,25 @@
+<p>
+  register works!
+</p>
+<h2>Registration form</h2>
+<h4>{{statusMsg}} </h4>
+<form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm.value)">
+  <div class="form-group">
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+    <div class="alert" *ngIf="!registerForm.controls['name'].valid && registerForm.controls['name'].touched">{{requiredMsg}}</div>
+  </div>
+  <div class="form-group">
+    <label class="center-block">Email:
+      <input class="form-control" formControlName="email">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="center-block">Password:
+      <input class="form-control" formControlName="password">
+    </label>
+  </div>
+  <input type="submit" value="Register" class="button expanded" [disabled]="!registerForm.valid"/>
+</form>

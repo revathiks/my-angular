@@ -1,0 +1,53 @@
+<form (ngSubmit)="onadduserSubmit(userform)" [formGroup] = "userform">
+    <div class="form-group">
+      <label class="center-block">Name:
+        <input class="form-control" formControlName="name">
+      </label>
+      <div class="alert" *ngIf="!userform.controls['name'].valid && userform.controls['name'].touched">{{requiredMsg}}</div>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Email:
+        <input class="form-control" formControlName="email">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="Country">Country:</label>
+      <select *ngIf="getCountries()"  (change)="onSelectCountry($event.target.value)" class="form-control input-lg" formControlName="country"
+         >
+         <option value="0">Select Country</option>
+        <option *ngFor="let country of getCountries()" value= {{country.id}}>{{country.name}}</option>
+      </select>
+    </div>
+   
+    <div class="form-group">
+      <label class="control-label" for="States">States:</label>
+      <select *ngIf="states"  (change)="onSelectState($event.target.value)" class="form-control input-lg" formControlName="state">
+          <option value="0">Select State</option>
+        <option *ngFor="let state of states" value= {{state.id}}>{{state.name}}</option>
+      </select>
+    </div>
+   
+    <div class="form-group">
+      <label class="control-label" for="City">City:</label>
+      <select class="form-control input-lg" formControlName="city">
+          <option *ngIf="!selectedState" value="0">Select City</option>
+          <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label class="center-block">Password:
+        <input class="form-control" formControlName="password">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="center-block">dob:
+       
+      </label>
+      <ng-datepicker formControlName="dob"  [(ngModel)]="dob"  [options]="options" ></ng-datepicker>
+    </div>
+
+    <button type="submit" class="btn btn-default"  >Submit</button>
+  </form>

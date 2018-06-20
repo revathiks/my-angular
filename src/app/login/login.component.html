@@ -1,0 +1,10 @@
+<p>
+  Login status: {{Message}}
+</p>
+<form  (submit)="userlogin(loginform)"  #loginform="ngForm" >
+  
+
+  <input type="text"  placeholder="Email" id="email" required name="email" [(ngModel)]="model.email" /><br>
+  <input type="text"  placeholder="Password" id="password" required name="password" [(ngModel)]="model.password" />
+  <input type="submit" value="login"/>
+</form>

@@ -1,0 +1,32 @@
+<p>
+  contactus works!
+</p>
+<form (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control"  required name="name" [(ngModel)]="model.name" #name="ngModel"/>
+    <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                            <div *ngIf="name.errors.required">First Name is required</div>
+                            <div *ngIf="name.errors.email">First Name isfsd required</div>
+                        </div>
+                    
+  </div>
+
+  <div class="form-group">
+    <label for="email">email</label>
+
+    <input type="text" class="form-control"  required name="email" [(ngModel)]="model.email" #email="ngModel" />
+  </div>
+  <div class="form-group">
+    <label for="city">city</label>
+    <select class="form-control"  id="city" [(ngModel)]="model.city" name="city" #city="ngModel">
+        <option>please select city</option>
+        <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+        
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success" >Submit</button>
+     
+</form>
+{{formval}}

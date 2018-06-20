@@ -1,0 +1,45 @@
+<h2>Edit User</h2>
+<form (ngSubmit)="onedituserSubmit(usereditform)" [formGroup] = "usereditform">
+    <div class="form-group">
+      <label class="center-block">Name:
+        <input class="form-control" formControlName="name" [(ngModel)]="empData.name" >
+      </label>
+      <div class="alert" *ngIf="!usereditform.controls['name'].valid && usereditform.controls['name'].touched">{{requiredMsg}}</div>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Email:
+        <input class="form-control" formControlName="email" [(ngModel)]="empData.email">
+      </label>
+    </div>
+  <div class="form-group">
+    <label class="control-label" for="Country">Country:</label>
+    <select *ngIf="getCountries()" [(ngModel)]="selectedCountry"  (change)="onSelectCountry($event.target.value)" class="form-control input-lg" formControlName="country"
+       >
+       <option value="0">Select Country</option>
+      <option *ngFor="let country of getCountries()" value= {{country.id}}>{{country.name}}</option>
+    </select>
+  </div>
+ 
+  <div class="form-group">
+    <label class="control-label" for="States">States:</label>
+    <select *ngIf="states"  [(ngModel)]="selectedState"  (change)="onSelectState($event.target.value)" class="form-control input-lg" formControlName="state">
+        <option value="0">Select State</option>
+      <option *ngFor="let state of states" value= {{state.id}}>{{state.name}}</option>
+    </select>
+  </div>
+ 
+  <div class="form-group">
+    <label class="control-label" for="City">City:</label>
+    <select *ngIf="cities"  [(ngModel)]="selectedCity" class="form-control input-lg" formControlName="city"  >
+        <option *ngIf="!selectedState" value="0">Select City</option>
+        <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+    </select>
+  </div>
+
+    <div class="form-group">
+      <label class="center-block">Password:
+        <input type="password" class="form-control" formControlName="password" [(ngModel)]="empData.password">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default"  >Submit</button>
+  </form>
